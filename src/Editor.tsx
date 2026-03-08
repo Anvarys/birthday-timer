@@ -26,7 +26,7 @@ export function Editor() {
       return `timer?dt=${date?.toISOString()}`
     }
     else {
-      return `timer?m=${date?.getMonth()}&d=${date?.getDay()}`
+      return `timer?m=${date?.getMonth()}&d=${date?.getDate()}`
     }
   }
 
