@@ -16,17 +16,22 @@ export function Timer() {
   }, []);
 
   const [searchParams] = useSearchParams();
-  const dateParam = searchParams.get("d");
+  const dateParam = searchParams.get("dt");
+  const monthParam = searchParams.get("m");
+  const dayParam = searchParams.get("d");
 
-  if (!dateParam) {
+  let date: Date;
+
+  if (dateParam) {
+    date = new Date(dateParam)
+    date.setFullYear((new Date()).getFullYear())
+  } else if (monthParam && dayParam) {
+    date = new Date((new Date()).getFullYear(), Number.parseInt(monthParam), Number.parseInt(dayParam), 0, 0, 0, 0)
+  } else {
     return (<div className="w-[100%] h-[100%] flex flex-col items-center p-5 gap-10 text-neutral-100">
       Error 404 Not found
     </div>)
   }
-
-  const date = new Date(dateParam)
-
-  date.setFullYear((new Date()).getFullYear())
 
   if (new Date().getTime() > date!.getTime()){
     date!.setFullYear((new Date()).getFullYear()+1)
