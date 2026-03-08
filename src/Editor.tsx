@@ -4,19 +4,29 @@ import React from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 
 
-export function App() {
+export function Editor() {
 
   const [date, setDate] = React.useState<Date | undefined>(
     localStorage.getItem("birthday") ? new Date(localStorage.getItem("birthday")!) : new Date()
   )
   const [currentMonth, setCurrentMonth] = React.useState<Date>(
-    new Date(new Date().getFullYear(), new Date().getMonth(), 1)
+    new Date(2008, new Date().getMonth(), 1, 0, 0, 0, 0)
   )
   const [isLocalisedTimeTimer, setIsLocalisedTimeTimer] = React.useState<boolean>(false)
 
   React.useEffect(() => {
     localStorage.setItem("birthday", date?.toISOString()!)
   })
+
+  function getLink(){
+    if (!isLocalisedTimeTimer)  {
+      return `/timer?d=${date?.toISOString()}`
+    }
+    else {
+      const newDate = date
+      newDate
+    }
+  }
 
 return (<div className="w-[100%] h-[100%] flex flex-col items-center p-5 gap-5 text-neutral-100">
   <Label className="text-3xl text-center mb-5">Birthday timer</Label>
@@ -29,16 +39,19 @@ return (<div className="w-[100%] h-[100%] flex flex-col items-center p-5 gap-5 t
     onSelect={setDate}
     className=""
   />
-  <div className="flex flex-row gap-4 w-max-2xl justify-center">
+  <div className="flex flex-row gap-4 max-w-xl justify-center">
   <Checkbox
     checked={isLocalisedTimeTimer}
     onCheckedChange={(v: boolean) => {setIsLocalisedTimeTimer(v)}}
   />
-  <Label>Will the timer be changed depending on the timezone of the person who will open it</Label>
+  <Label className="max-w-xl">Will the timer be changed depending on the timezone of the person who will open it (So if they are one hour ahead of you their timer will have 1h less if this is turned on)</Label>
   </div>
 
   <Label className="text-xl">The link to share your birthday timer:</Label>
+  <div>
+  <p>{getLink()}</p>
+  </div>
 </div>);
 }
 
-export default App;
+export default Editor;
