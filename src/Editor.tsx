@@ -58,10 +58,10 @@ return (<div className="w-[100%] h-[100%] flex flex-col items-center p-5 gap-5 t
   <>
     <Label className="text-xl">The link to share your birthday timer:</Label>
     <div className="flex flex-row item-center gap-2 cursor-pointer" onClick={() => {
-      navigator.clipboard.writeText(`http://localhost:5173/${getLink()}`)
+      navigator.clipboard.writeText(`https://birthday-time.pages.dev/${getLink()}`)
       toast("Copied!")
     }}>
-    <span>http://localhost:5173/{getLink()}</span>
+    <span>https://birthday-time.pages.dev/{getLink()}</span>
     <div><CopyIcon /></div>
     </div>
   </>
