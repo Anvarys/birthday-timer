@@ -13,7 +13,7 @@ export function Editor() {
     localStorage.getItem("birthday") ? new Date(localStorage.getItem("birthday")!) : undefined
   )
   const [currentMonth, setCurrentMonth] = React.useState<Date>(
-    new Date(2000, new Date().getMonth(), 1, 0, 0, 0, 0)
+    date ? date : new Date()
   )
   const [isLocalisedTimeTimer, setIsLocalisedTimeTimer] = React.useState<boolean>(false)
 
