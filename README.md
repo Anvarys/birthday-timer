@@ -11,3 +11,7 @@ git clone https://github.com/Anvarys/birthday-timer.git
 cd birthday-timer
 npm run dev
 ```
+
+
+Attribution:
+Birthday calendar icon - https://www.freepik.com/
