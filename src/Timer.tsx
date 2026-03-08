@@ -1,5 +1,5 @@
 import React from "react";
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { Label } from "@/components/ui/label";
 
 export function Timer() {
