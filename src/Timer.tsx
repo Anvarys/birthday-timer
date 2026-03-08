@@ -3,8 +3,6 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import { Label } from "@/components/ui/label";
 
 export function Timer() {
-  const navigate = useNavigate();
-
   const [, setTick] = React.useState(0);
 
   React.useEffect(() => {
